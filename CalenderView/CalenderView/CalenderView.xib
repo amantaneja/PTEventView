@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CalenderView" customModule="CalenderView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="173"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-Es-xRh">
+                    <rect key="frame" x="0.0" y="0.0" width="382" height="173"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-OZ-rXI">
+                            <rect key="frame" x="0.0" y="0.0" width="67" height="173"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="oE7-Oc-KLi"/>
+                                <outlet property="delegate" destination="-1" id="1o8-UT-iqO"/>
+                            </connections>
+                        </tableView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xdl-Hi-9PT">
+                            <rect key="frame" x="61" y="22" width="321" height="151"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="axk-d4-jL3"/>
+                                <outlet property="delegate" destination="-1" id="hYK-22-zI5"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Xdl-Hi-9PT" firstAttribute="top" secondItem="HVR-Es-xRh" secondAttribute="top" constant="22" id="PKH-Jp-1BI"/>
+                        <constraint firstItem="pNb-OZ-rXI" firstAttribute="leading" secondItem="HVR-Es-xRh" secondAttribute="leading" id="TFx-42-o6k"/>
+                        <constraint firstItem="Xdl-Hi-9PT" firstAttribute="leading" secondItem="HVR-Es-xRh" secondAttribute="leading" constant="61" id="Ujl-ga-ojA"/>
+                        <constraint firstAttribute="bottom" secondItem="Xdl-Hi-9PT" secondAttribute="bottom" id="fyd-1c-0H8"/>
+                        <constraint firstAttribute="bottom" secondItem="pNb-OZ-rXI" secondAttribute="bottom" id="nOQ-mE-ZGQ"/>
+                        <constraint firstItem="pNb-OZ-rXI" firstAttribute="top" secondItem="HVR-Es-xRh" secondAttribute="top" id="rCs-8E-gcm"/>
+                        <constraint firstAttribute="trailing" secondItem="pNb-OZ-rXI" secondAttribute="trailing" constant="315" id="vQX-5n-ZUn"/>
+                        <constraint firstAttribute="trailing" secondItem="Xdl-Hi-9PT" secondAttribute="trailing" id="yQV-aE-Lh1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HVR-Es-xRh" secondAttribute="trailing" id="Fpc-Bv-OZJ"/>
+                <constraint firstItem="HVR-Es-xRh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bdX-9Z-Oh8"/>
+                <constraint firstItem="HVR-Es-xRh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wMx-TA-8ko"/>
+                <constraint firstAttribute="bottom" secondItem="HVR-Es-xRh" secondAttribute="bottom" id="xg8-pK-vKB"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="eventTableView" destination="Xdl-Hi-9PT" id="EkA-m8-Q4N"/>
+                <outlet property="timeTableView" destination="pNb-OZ-rXI" id="5Wc-kO-HYO"/>
+            </connections>
+            <point key="canvasLocation" x="-28" y="-195.5"/>
+        </view>
+    </objects>
+</document>
