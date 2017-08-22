@@ -8,90 +8,112 @@
 
 import UIKit
 
-class CalenderView: UIView {
+enum timeZone:String
+{
+    case
+    AM = "AM",
+    PM = "PM"
+}
 
+protocol CalenderViewProtocol:class {
+    func didTapCalenderView(height:CGFloat)
+}
+
+@IBDesignable
+class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
+
+    /**
+     Color of Event View
+     */
+    @IBInspectable open var eventColor: UIColor = UIColor.lightGray
+   
+    /**
+     Border Color of Calender View
+     */
+    @IBInspectable open var borderColor: UIColor = UIColor.darkGray  {
+        didSet {
+            self.layer.borderColor = borderColor.cgColor
+        }
+    }
+ 
+    /**
+     Border Width of Calender View
+     */
+    @IBInspectable open var borderWidth: CGFloat = 1.0  {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+
+    /**
+     Corner Radius of Calender View
+     */
+    @IBInspectable open var cornerRadius: CGFloat = 6.0  {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+            self.clipsToBounds = true
+        }
+    }
+
+    //TableViews for CalenderView
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var timeTableView: UITableView!
     
-    @IBOutlet weak var majorViewHeightConstraint: NSLayoutConstraint!
-    var mymodel = [Dictionary<String,String>]()
-    var timesArray = [Int]()
-    var eventsArray = [String]()
+    //Calender View Protocol
+    weak var delegate: CalenderViewProtocol?
     
+    //Model for storing values
+    var mymodel = [Dictionary<String,String>]()
+    
+    /**
+     Is CalenderView Tapped
+     */
+
     var isClicked: Bool = false
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-      
-    }
-    
-    func setup(startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]){
+    /**
+     Setup Calender View
+     */
+
+    func setup(frame: CGRect, startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]){
         
-        self.layer.cornerRadius = 6.0
-        self.layer.borderColor = UIColor.darkGray.cgColor
-        self.layer.borderWidth = 1.0
+        self.frame = frame
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = borderWidth
         self.clipsToBounds = true
+        
+        self.addEvent(startTime: startTime, startTimeZone: startTimeZone, eventName: eventName, endTime: endTime, endTimeZone: endTimeZone)
         
         eventTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
         timeTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
         
-        self.addEvent(startTime: startTime, startTimeZone: startTimeZone, eventName: eventName, endTime: endTime, endTimeZone: endTimeZone)
+        self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: CGFloat((mymodel.count-1)*22)))
+        self.timeTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: CGFloat((mymodel.count)*22)))
         
-        self.eventTableView.delegate = self
-        self.eventTableView.dataSource = self
-        self.timeTableView.delegate = self
-        self.timeTableView.delegate = self
+        
+        self.addSubview(eventTableView)
+        self.addSubview(timeTableView)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapBlurButton(_:)))
         self.addGestureRecognizer(tapGesture)
     }
 
-    
-    func tapBlurButton(_ sender: UITapGestureRecognizer) {
-        self.layoutIfNeeded()
-        
-        if isClicked {
-            majorViewHeightConstraint.constant = 132
-            isClicked = false
-        } else {
-            majorViewHeightConstraint.constant = (self.eventTableView?.contentSize.height)!
-            isClicked = true
-        }
-        
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.layoutIfNeeded()
-        })
-    }
-
-}
-
-extension CalenderView{
-    class func RGBA(_ r : Int,g : Int,b : Int,a : CGFloat) -> UIColor{
-        
-        let red : CGFloat = CGFloat(r) / 255
-        let green : CGFloat = CGFloat(g) / 255
-        let blue : CGFloat = CGFloat(b) / 255
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: a)
-        
-    }
-}
-
-
-extension CalenderView: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
+
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         if tableView == self.eventTableView{
             return mymodel.count-1
         } else {
             return mymodel.count
         }
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -103,7 +125,7 @@ extension CalenderView: UITableViewDataSource, UITableViewDelegate{
             
             if cellModel["event"] != "" {
                 returnCell.cellLabel.text = cellModel["eventName"]
-                returnCell.backgroundColor = UIColor(red: 74/255, green: 181/255, blue: 248/255, alpha: 1)
+                returnCell.backgroundColor = eventColor
                 returnCell.cellLabel.textColor = UIColor.white
             } else{
                 returnCell.cellLabel.text = ""
@@ -120,6 +142,35 @@ extension CalenderView: UITableViewDataSource, UITableViewDelegate{
         }
         
         return returnCell
+    }
+
+    @IBOutlet weak var majorViewHeightConstraint: NSLayoutConstraint!
+    func tapBlurButton(_ sender: UITapGestureRecognizer) {
+        self.layoutIfNeeded()
+        
+        if isClicked {
+            majorViewHeightConstraint.constant = 132
+            isClicked = false
+        } else {
+            majorViewHeightConstraint.constant = (self.eventTableView?.contentSize.height)!
+            isClicked = true
+        }
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layoutIfNeeded()
+        })
+    }
+}
+
+extension CalenderView{
+    class func RGBA(_ r : Int,g : Int,b : Int,a : CGFloat) -> UIColor{
+        
+        let red : CGFloat = CGFloat(r) / 255
+        let green : CGFloat = CGFloat(g) / 255
+        let blue : CGFloat = CGFloat(b) / 255
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: a)
+        
     }
 }
 

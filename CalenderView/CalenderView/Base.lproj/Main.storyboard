@@ -22,22 +22,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7L-2n-Jv7" customClass="CalenderView" customModule="CalenderView" customModuleProvider="target">
-                                <rect key="frame" x="30" y="60" width="354" height="132"/>
+                                <rect key="frame" x="20" y="60" width="375" height="132"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="QtO-Ag-dhd"/>
+                                    <constraint firstAttribute="width" constant="375" id="LA1-F8-pjd"/>
+                                    <constraint firstAttribute="height" constant="132" id="wWm-jX-nIl"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventColor">
+                                        <color key="value" red="1" green="0.211691453" blue="0.21224296509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="b7L-2n-Jv7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="9pi-ZF-yXF"/>
-                            <constraint firstAttribute="trailing" secondItem="b7L-2n-Jv7" secondAttribute="trailing" constant="30" id="Gc8-Ro-gi7"/>
-                            <constraint firstItem="b7L-2n-Jv7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="k3C-BF-0Ta"/>
+                            <constraint firstItem="b7L-2n-Jv7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="qkR-de-5Hc"/>
+                            <constraint firstItem="b7L-2n-Jv7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rHF-iR-6d5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="majorViewConstraint" destination="QtO-Ag-dhd" id="4jP-ka-jkM"/>
+                        <outlet property="majorViewConstraint" destination="wWm-jX-nIl" id="j0d-AO-QAy"/>
+                        <outlet property="myCalenderView" destination="b7L-2n-Jv7" id="i5x-mV-Ajy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
