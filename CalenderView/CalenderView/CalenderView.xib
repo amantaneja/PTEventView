@@ -18,34 +18,28 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qm-xU-15O">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-n0-3Jb">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-n0-3Jb">
                             <rect key="frame" x="0.0" y="0.0" width="65" height="132"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="hQP-ZG-YME"/>
-                                <outlet property="delegate" destination="-1" id="cFL-V4-iHB"/>
+                                <outlet property="dataSource" destination="IuD-B7-w6o" id="WGU-Wa-2Hc"/>
+                                <outlet property="delegate" destination="IuD-B7-w6o" id="cB3-JT-eGg"/>
                             </connections>
                         </tableView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jei-tp-ANd">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jei-tp-ANd">
                             <rect key="frame" x="45" y="22" width="330" height="110"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="PC9-YO-sxR"/>
-                                <outlet property="delegate" destination="-1" id="frU-mZ-iCP"/>
+                                <outlet property="dataSource" destination="IuD-B7-w6o" id="KAb-i4-lH2"/>
+                                <outlet property="delegate" destination="IuD-B7-w6o" id="wCu-Fe-JGz"/>
                             </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="XLV-n0-3Jb" secondAttribute="trailing" constant="310" id="4mV-Id-dGk"/>
-                        <constraint firstAttribute="trailing" secondItem="jei-tp-ANd" secondAttribute="trailing" id="G5F-tE-ogd"/>
-                        <constraint firstItem="jei-tp-ANd" firstAttribute="top" secondItem="8Qm-xU-15O" secondAttribute="top" constant="22" id="Icd-lX-Qb5"/>
-                        <constraint firstItem="XLV-n0-3Jb" firstAttribute="top" secondItem="8Qm-xU-15O" secondAttribute="top" id="X51-2u-LUd"/>
-                        <constraint firstItem="jei-tp-ANd" firstAttribute="leading" secondItem="8Qm-xU-15O" secondAttribute="leading" constant="45" id="b0s-vv-neT"/>
                         <constraint firstAttribute="height" constant="132" id="e0P-e8-cP4"/>
-                        <constraint firstAttribute="bottom" secondItem="jei-tp-ANd" secondAttribute="bottom" id="eH3-qx-epU"/>
-                        <constraint firstAttribute="bottom" secondItem="XLV-n0-3Jb" secondAttribute="bottom" id="rx5-C4-dYM"/>
-                        <constraint firstItem="XLV-n0-3Jb" firstAttribute="leading" secondItem="8Qm-xU-15O" secondAttribute="leading" id="uez-QN-6Yp"/>
                     </constraints>
                 </view>
             </subviews>
@@ -58,7 +52,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="eventTableView" destination="jei-tp-ANd" id="uIM-lJ-6PL"/>
-                <outlet property="majorViewHeightConstraint" destination="e0P-e8-cP4" id="lrD-hq-gjb"/>
+                <outlet property="majorViewHeightConstraint" destination="e0P-e8-cP4" id="l25-Qs-tQM"/>
                 <outlet property="timeTableView" destination="XLV-n0-3Jb" id="hG2-9U-nvd"/>
             </connections>
             <point key="canvasLocation" x="-29.5" y="18.5"/>
