@@ -15,6 +15,8 @@
 		6193BA1D1F47190D0024802B /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6193BA1C1F47190D0024802B /* CalenderView.swift */; };
 		6193BA1F1F4719290024802B /* CalenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6193BA1E1F4719290024802B /* CalenderView.xib */; };
 		6193BA211F47302C0024802B /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6193BA201F47302C0024802B /* CalenderModel.swift */; };
+		6193BA241F4AF9BE0024802B /* CalenderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6193BA221F4AF9BE0024802B /* CalenderViewCell.swift */; };
+		6193BA251F4AF9BE0024802B /* CalenderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6193BA231F4AF9BE0024802B /* CalenderViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		6193BA1C1F47190D0024802B /* CalenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		6193BA1E1F4719290024802B /* CalenderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalenderView.xib; sourceTree = "<group>"; };
 		6193BA201F47302C0024802B /* CalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
+		6193BA221F4AF9BE0024802B /* CalenderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderViewCell.swift; sourceTree = "<group>"; };
+		6193BA231F4AF9BE0024802B /* CalenderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalenderViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				6193BA161F47189B0024802B /* Info.plist */,
 				6193BA1C1F47190D0024802B /* CalenderView.swift */,
 				6193BA1E1F4719290024802B /* CalenderView.xib */,
+				6193BA221F4AF9BE0024802B /* CalenderViewCell.swift */,
+				6193BA231F4AF9BE0024802B /* CalenderViewCell.xib */,
 			);
 			path = CalenderView;
 			sourceTree = "<group>";
@@ -132,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6193BA251F4AF9BE0024802B /* CalenderViewCell.xib in Resources */,
 				6193BA151F47189B0024802B /* LaunchScreen.storyboard in Resources */,
 				6193BA121F47189B0024802B /* Assets.xcassets in Resources */,
 				6193BA1F1F4719290024802B /* CalenderView.xib in Resources */,
@@ -146,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6193BA241F4AF9BE0024802B /* CalenderViewCell.swift in Sources */,
 				6193BA0D1F47189B0024802B /* ViewController.swift in Sources */,
 				6193BA211F47302C0024802B /* CalenderModel.swift in Sources */,
 				6193BA0B1F47189B0024802B /* AppDelegate.swift in Sources */,
@@ -309,6 +317,7 @@
 				6193BA1B1F47189B0024802B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

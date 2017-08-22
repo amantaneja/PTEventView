@@ -11,58 +11,57 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CalenderView" customModule="CalenderView" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="173"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view contentMode="scaleToFill" id="IuD-B7-w6o" customClass="CalenderView" customModule="CalenderView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-Es-xRh">
-                    <rect key="frame" x="0.0" y="0.0" width="382" height="173"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qm-xU-15O">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-OZ-rXI">
-                            <rect key="frame" x="0.0" y="0.0" width="67" height="173"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-n0-3Jb">
+                            <rect key="frame" x="0.0" y="0.0" width="65" height="132"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="oE7-Oc-KLi"/>
-                                <outlet property="delegate" destination="-1" id="1o8-UT-iqO"/>
+                                <outlet property="dataSource" destination="-1" id="hQP-ZG-YME"/>
+                                <outlet property="delegate" destination="-1" id="cFL-V4-iHB"/>
                             </connections>
                         </tableView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xdl-Hi-9PT">
-                            <rect key="frame" x="61" y="22" width="321" height="151"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jei-tp-ANd">
+                            <rect key="frame" x="45" y="22" width="330" height="110"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="axk-d4-jL3"/>
-                                <outlet property="delegate" destination="-1" id="hYK-22-zI5"/>
+                                <outlet property="dataSource" destination="-1" id="PC9-YO-sxR"/>
+                                <outlet property="delegate" destination="-1" id="frU-mZ-iCP"/>
                             </connections>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Xdl-Hi-9PT" firstAttribute="top" secondItem="HVR-Es-xRh" secondAttribute="top" constant="22" id="PKH-Jp-1BI"/>
-                        <constraint firstItem="pNb-OZ-rXI" firstAttribute="leading" secondItem="HVR-Es-xRh" secondAttribute="leading" id="TFx-42-o6k"/>
-                        <constraint firstItem="Xdl-Hi-9PT" firstAttribute="leading" secondItem="HVR-Es-xRh" secondAttribute="leading" constant="61" id="Ujl-ga-ojA"/>
-                        <constraint firstAttribute="bottom" secondItem="Xdl-Hi-9PT" secondAttribute="bottom" id="fyd-1c-0H8"/>
-                        <constraint firstAttribute="bottom" secondItem="pNb-OZ-rXI" secondAttribute="bottom" id="nOQ-mE-ZGQ"/>
-                        <constraint firstItem="pNb-OZ-rXI" firstAttribute="top" secondItem="HVR-Es-xRh" secondAttribute="top" id="rCs-8E-gcm"/>
-                        <constraint firstAttribute="trailing" secondItem="pNb-OZ-rXI" secondAttribute="trailing" constant="315" id="vQX-5n-ZUn"/>
-                        <constraint firstAttribute="trailing" secondItem="Xdl-Hi-9PT" secondAttribute="trailing" id="yQV-aE-Lh1"/>
+                        <constraint firstAttribute="trailing" secondItem="XLV-n0-3Jb" secondAttribute="trailing" constant="310" id="4mV-Id-dGk"/>
+                        <constraint firstAttribute="trailing" secondItem="jei-tp-ANd" secondAttribute="trailing" id="G5F-tE-ogd"/>
+                        <constraint firstItem="jei-tp-ANd" firstAttribute="top" secondItem="8Qm-xU-15O" secondAttribute="top" constant="22" id="Icd-lX-Qb5"/>
+                        <constraint firstItem="XLV-n0-3Jb" firstAttribute="top" secondItem="8Qm-xU-15O" secondAttribute="top" id="X51-2u-LUd"/>
+                        <constraint firstItem="jei-tp-ANd" firstAttribute="leading" secondItem="8Qm-xU-15O" secondAttribute="leading" constant="45" id="b0s-vv-neT"/>
+                        <constraint firstAttribute="height" constant="132" id="e0P-e8-cP4"/>
+                        <constraint firstAttribute="bottom" secondItem="jei-tp-ANd" secondAttribute="bottom" id="eH3-qx-epU"/>
+                        <constraint firstAttribute="bottom" secondItem="XLV-n0-3Jb" secondAttribute="bottom" id="rx5-C4-dYM"/>
+                        <constraint firstItem="XLV-n0-3Jb" firstAttribute="leading" secondItem="8Qm-xU-15O" secondAttribute="leading" id="uez-QN-6Yp"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="HVR-Es-xRh" secondAttribute="trailing" id="Fpc-Bv-OZJ"/>
-                <constraint firstItem="HVR-Es-xRh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bdX-9Z-Oh8"/>
-                <constraint firstItem="HVR-Es-xRh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wMx-TA-8ko"/>
-                <constraint firstAttribute="bottom" secondItem="HVR-Es-xRh" secondAttribute="bottom" id="xg8-pK-vKB"/>
+                <constraint firstItem="8Qm-xU-15O" firstAttribute="top" secondItem="IuD-B7-w6o" secondAttribute="top" id="7cR-yO-vBs"/>
+                <constraint firstItem="8Qm-xU-15O" firstAttribute="leading" secondItem="IuD-B7-w6o" secondAttribute="leading" id="c16-Do-Jc8"/>
+                <constraint firstAttribute="trailing" secondItem="8Qm-xU-15O" secondAttribute="trailing" id="iGP-Ts-vpz"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="eventTableView" destination="Xdl-Hi-9PT" id="EkA-m8-Q4N"/>
-                <outlet property="timeTableView" destination="pNb-OZ-rXI" id="5Wc-kO-HYO"/>
+                <outlet property="eventTableView" destination="jei-tp-ANd" id="uIM-lJ-6PL"/>
+                <outlet property="majorViewHeightConstraint" destination="e0P-e8-cP4" id="lrD-hq-gjb"/>
+                <outlet property="timeTableView" destination="XLV-n0-3Jb" id="hG2-9U-nvd"/>
             </connections>
-            <point key="canvasLocation" x="-28" y="-195.5"/>
+            <point key="canvasLocation" x="-29.5" y="18.5"/>
         </view>
     </objects>
 </document>
