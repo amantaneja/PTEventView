@@ -23,11 +23,9 @@ class ViewController: UIViewController,CalenderViewProtocol {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-       
-        
         let calender = UIView.loadFromNibNamed("CalenderView", bundle: nil) as? CalenderView
         calender?.delegate = self
-        calender?.setup(frame: myCalenderView.frame,startTime: [5,7], startTimeZone: [.AM,.AM], eventName: ["My Event","New"], endTime: [6,8], endTimeZone: [.AM,.AM])
+        calender?.setup(frame: myCalenderView.frame,startTime: [9,13], startTimeZone: [.AM,.AM], eventName: ["My Event","New"], endTime: [10,18], endTimeZone: [.AM,.AM])
         self.view.addSubview(calender!)
     
     }

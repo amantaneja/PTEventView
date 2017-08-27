@@ -15,18 +15,14 @@ enum timeZone:String
     PM = "PM"
 }
 
-protocol CalenderViewProtocol:class {
-    func didTapCalenderView(height:CGFloat)
-}
-
 @IBDesignable
-class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
+class CalenderView: UIView{
 
     /**
      Color of Event View
      */
-    @IBInspectable open var eventColor: UIColor = UIColor.lightGray
-   
+    @IBInspectable open var eventColor: UIColor = UIColor(red: 58/255, green: 181/255, blue: 244/255, alpha: 1)
+        
     /**
      Border Color of Calender View
      */
@@ -62,19 +58,20 @@ class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
     //Calender View Protocol
     weak var delegate: CalenderViewProtocol?
     
+    var singleTimeArray = [Dictionary<String,String>]()
+
+    
     //Model for storing values
     var mymodel = [Dictionary<String,String>]()
     
     /**
      Is CalenderView Tapped
      */
-
     var isClicked: Bool = false
     
     /**
      Setup Calender View
      */
-
     func setup(frame: CGRect, startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]){
         
         self.frame = frame
@@ -83,14 +80,21 @@ class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true
         
+        for i in 0..<startTime.count {
+            var valuesDictionary = Dictionary<String,String>()
+            
+            valuesDictionary["startTime"] = startTime[i].description + " " + returnTimeZone(zone: startTimeZone[i])
+            valuesDictionary["EndTime"] = endTime[i].description + " " + returnTimeZone(zone: endTimeZone[i])
+            valuesDictionary["eventName"] = eventName[i]
+            
+            singleTimeArray.append(valuesDictionary)
+        }
+        
+        
         self.addEvent(startTime: startTime, startTimeZone: startTimeZone, eventName: eventName, endTime: endTime, endTimeZone: endTimeZone)
         
         eventTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
         timeTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
-        
-        self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: CGFloat((mymodel.count-1)*22)))
-        self.timeTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: CGFloat((mymodel.count)*22)))
-        
         
         self.addSubview(eventTableView)
         self.addSubview(timeTableView)
@@ -99,14 +103,57 @@ class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
         self.addGestureRecognizer(tapGesture)
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func returnTimeZone(zone:timeZone) -> String{
+    
+        if zone == timeZone.AM {
+            return "AM"
+        }
+        else {
+            return "PM"
+        }
+    }
+ 
 
+    func tapBlurButton(_ sender: UITapGestureRecognizer) {
+        
+        self.layoutIfNeeded()
+        
+        
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            if self.isClicked {
+                
+                self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: 132))
+                self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: 132))
+                self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: CGSize(width: self.timeTableView.frame.width, height: 132))
+
+                self.isClicked = false
+            } else {
+                
+                self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: self.timeTableView.contentSize.height))
+                self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: self.eventTableView.contentSize)
+                self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: self.timeTableView.contentSize)
+                
+                self.isClicked = true
+            }
+            
+            self.layoutIfNeeded()
+        })
+    }
+}
+
+extension CalenderView :UITabBarDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
+        print(self.frame.size.width)
+        print(self.timeTableView.contentSize.width)
         if tableView == self.eventTableView{
             return mymodel.count-1
         } else {
@@ -125,7 +172,7 @@ class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
             
             if cellModel["event"] != "" {
                 returnCell.cellLabel.text = cellModel["eventName"]
-                returnCell.backgroundColor = eventColor
+                returnCell.contentView.backgroundColor = eventColor
                 returnCell.cellLabel.textColor = UIColor.white
             } else{
                 returnCell.cellLabel.text = ""
@@ -142,23 +189,6 @@ class CalenderView: UIView, UITableViewDataSource, UITableViewDelegate {
         }
         
         return returnCell
-    }
-
-    @IBOutlet weak var majorViewHeightConstraint: NSLayoutConstraint!
-    func tapBlurButton(_ sender: UITapGestureRecognizer) {
-        self.layoutIfNeeded()
-        
-        if isClicked {
-            majorViewHeightConstraint.constant = 132
-            isClicked = false
-        } else {
-            majorViewHeightConstraint.constant = (self.eventTableView?.contentSize.height)!
-            isClicked = true
-        }
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.layoutIfNeeded()
-        })
     }
 }
 
@@ -203,117 +233,35 @@ extension UIFont{
 extension CalenderView {
     func addEvent(startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]) {
         
-        if !endTimeZone.contains(.PM) && !startTimeZone.contains(.PM){
-            
-            for i in startTime.min()!-1..<endTime.max()!+2 {
-                
-                var valueDict = Dictionary<String,String>()
-                valueDict["time"] = i.description + " AM"
-                
-                if startTime.contains(i){
-                    let indexOfElement = startTime.index(of: i)
-                    valueDict["eventName"] = eventName[indexOfElement!]
-                } else {
-                    valueDict["eventName"] = ""
-                }
-                
-                if i>=startTime.first! && i<endTime.last!{
-                    for index in 0..<startTime.count{
-                        
-                        if i>=startTime[index] && i<endTime[index]{
-                            valueDict["event"] = " "
-                            break
-                        } else {
-                            valueDict["event"] = ""
-                        }
-                    }
-                } else {
-                    valueDict["event"] = ""
-                }
-                mymodel.append(valueDict)
-            }
-        }
         
-        if endTimeZone.contains(.PM) && !startTimeZone.contains(.PM){
-            for i in startTime.min()!-1..<13{
-                var valueDict = Dictionary<String,String>()
-                valueDict["time"] = i.description + "AM"
-                
-                if startTime.contains(i){
-                    let indexOfElement = startTime.index(of: i)
-                    valueDict["eventName"] = eventName[indexOfElement!]
-                } else {
-                    valueDict["eventName"] = ""
-                }
-                
-                if i>=startTime.first! && i<endTime.last!{
-                    for index in 0..<startTime.count{
-                        
-                        if i>=startTime[index] && i<endTime[index]{
-                            valueDict["event"] = " "
-                            break
-                        } else {
-                            valueDict["event"] = ""
-                        }
-                    }
-                } else {
-                    valueDict["event"] = ""
-                }
-                mymodel.append(valueDict)
+        for i in startTime.min()!-1..<endTime.max()!+2 {
+            
+            var valueDict = Dictionary<String,String>()
+            
+            valueDict["time"] = i<13 ? i.description + " AM" : (i-12).description + " PM"
+            
+            if startTime.contains(i){
+                let indexOfElement = startTime.index(of: i)
+                valueDict["eventName"] = eventName[indexOfElement!]
+            } else {
+                valueDict["eventName"] = ""
             }
             
-            
-            for i in 1..<endTime.max()!+2{
-                var valueDict = Dictionary<String,String>()
-                valueDict["time"] = i.description + " PM"
-                
-                if startTime.contains(i){
-                    let indexOfElement = startTime.index(of: i)
-                    valueDict["eventName"] = eventName[indexOfElement!]
-                } else {
-                    valueDict["eventName"] = ""
-                }
-                
-                if i>=startTime.first! && i<endTime.last!{
-                    for index in 0..<startTime.count{
-                        
-                        if i>=startTime[index] && i<endTime[index]{
-                            valueDict["event"] = " "
-                            break
-                        } else {
-                            valueDict["event"] = ""
-                        }
+            if i>=startTime.first! && i<endTime.last!{
+                for index in 0..<startTime.count{
+                    
+                    if i>=startTime[index] && i<endTime[index]{
+                        valueDict["event"] = " "
+                        break
+                    } else {
+                        valueDict["event"] = ""
                     }
-                } else {
-                    valueDict["event"] = ""
                 }
-                mymodel.append(valueDict)
+            } else {
+                valueDict["event"] = ""
             }
-            
+            mymodel.append(valueDict)
         }
-        
-        /* if startTimeZone[index] == .PM && endTimeZone[index] == .PM {
-         for i in startTime[index]-1..<endTime[index]+2 {
-         
-         var valueDict = Dictionary<String,String>()
-         valueDict["time"] = i.description + " PM"
-         
-         if i == startTime[index]{
-         valueDict["eventName"] = eventName[index]
-         } else{
-         valueDict["eventName"] = ""
-         }
-         
-         if i>=startTime[index] && i<endTime[index] {
-         valueDict["event"] = " "
-         } else{
-         valueDict["event"] = ""
-         }
-         
-         
-         //mymodel[index].append(valueDict)
-         }
-         }*/
     }
 }
 
