@@ -1,7 +1,7 @@
 
-<img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventView.png">
+<center><img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventView.png"></center><br>
 An Event View based on Apple's Event Detail View. Written in Swift 3. Supports ARC, Autolayout and editing via StoryBoard.
-
+<br>
 ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 ![Platform](https://img.shields.io/badge/Platforms-iOS-red.svg)
 ![Swift 3.x](https://img.shields.io/badge/Swift-3.x-blue.svg)
