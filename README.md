@@ -1,6 +1,9 @@
 # ATEventView
 An Event View based on Apple's Event Detail View. Written in Swift 3. Supports ARC, Autolayout and editing via StoryBoard.
 
+<img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventViewPreview.gif">
+
+
 # ToDo[s]
 - [x] Add support for PM and AM via 24 hour format
 - [ ] Implement AutoLayout for CalenderView
