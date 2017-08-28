@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,CalenderViewProtocol {
+class ViewController: UIViewController {
 
     @IBOutlet weak var majorViewConstraint: NSLayoutConstraint!
     
@@ -25,18 +25,33 @@ class ViewController: UIViewController,CalenderViewProtocol {
         
         let calender = UIView.loadFromNibNamed("CalenderView", bundle: nil) as? CalenderView
         calender?.delegate = self
-        calender?.setup(frame: myCalenderView.frame,startTime: [9,13], startTimeZone: [.AM,.AM], eventName: ["My Event","New"], endTime: [10,18], endTimeZone: [.AM,.AM])
+        calender?.setup(frame: myCalenderView.frame,startTime: [10,12], startTimeZone: [.AM,.AM], eventName: ["Swift Meetup '17","WWDC Kickoff"], endTime: [11,15], endTimeZone: [.AM,.AM])
         self.view.addSubview(calender!)
     
-    }
-    
-    func didTapCalenderView(height: CGFloat) {
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+}
+
+extension ViewController: CalenderViewProtocol {
+    func willOpenCalenderView(height: CGFloat) {
+        
+    }
+    
+    func willCloseCalenderView(height: CGFloat) {
+        
+    }
+    
+    func didCloseCalenderView(height: CGFloat) {
+        
+    }
+    
+    func didOpenCalenderView(height: CGFloat) {
+        
     }
 
 }

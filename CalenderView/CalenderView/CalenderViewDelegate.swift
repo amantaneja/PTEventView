@@ -9,6 +9,14 @@
 import UIKit
 
 
-protocol CalenderViewProtocol:class {
-    func didTapCalenderView(height:CGFloat)
+@objc public protocol CalenderViewProtocol {
+    
+    @objc optional func willOpenCalenderView(height:CGFloat)
+    
+    @objc optional func didOpenCalenderView(height:CGFloat)
+    
+    @objc optional func willCloseCalenderView(height:CGFloat)
+    
+    @objc optional func didCloseCalenderView(height:CGFloat)
 }
+

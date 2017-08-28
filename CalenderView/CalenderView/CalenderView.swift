@@ -119,27 +119,38 @@ class CalenderView: UIView{
         
         self.layoutIfNeeded()
         
-        
-        
         UIView.animate(withDuration: 0.5, animations: {
+            
             if self.isClicked {
+                
+                self.delegate?.willCloseCalenderView!(height: 132)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: 132))
                 self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: 132))
                 self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: CGSize(width: self.timeTableView.frame.width, height: 132))
-
+                
+                
                 self.isClicked = false
             } else {
+                
+                self.delegate?.willOpenCalenderView!(height: self.timeTableView.contentSize.height)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: self.timeTableView.contentSize.height))
                 self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: self.eventTableView.contentSize)
                 self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: self.timeTableView.contentSize)
                 
+                
                 self.isClicked = true
             }
             
             self.layoutIfNeeded()
-        })
+        }) { (true) in
+            if !self.isClicked {
+                self.delegate?.didCloseCalenderView!(height: 132)
+            } else {
+                self.delegate?.didOpenCalenderView!(height: self.timeTableView.contentSize.height)
+            }
+        }
     }
 }
 
