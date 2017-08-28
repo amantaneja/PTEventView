@@ -1,6 +1,8 @@
 # ATEventView
 An Event View based on Apple's Event Detail View. Written in Swift 3. Supports ARC, Autolayout and editing via StoryBoard.
 
+![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
+
 <img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventView.gif">
 
 
