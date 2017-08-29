@@ -18,3 +18,7 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 - [ ] Support Events on the same day
 - [ ] Add IBInspectable for Row Color of Event
 
+
+## License
+
+PTEventView is released under the MIT license. See [LICENSE](https://github.com/amantaneja/PTEventView/blob/master/LICENSE) for details.
