@@ -2,7 +2,7 @@
 //  CalenderView.swift
 //  CalenderView
 //
-//  Created by Vinay Kharb on 8/18/17.
+//  Created by Aman Taneja on 8/18/17.
 //  Copyright © 2017 Aman Taneja. All rights reserved.
 //
 
@@ -18,11 +18,6 @@ enum timeZone:String
 @IBDesignable
 class CalenderView: UIView{
 
-    /**
-     Color of Event View
-     */
-    @IBInspectable open var eventColor: UIColor = UIColor(red: 58/255, green: 181/255, blue: 244/255, alpha: 1)
-        
     /**
      Border Color of Calender View
      */
@@ -51,18 +46,21 @@ class CalenderView: UIView{
         }
     }
 
-    //TableViews for CalenderView
+    /**
+     TableViews for CalenderView
+     */
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var timeTableView: UITableView!
     
-    //Calender View Protocol
+    /**
+     CalenderView Protocol
+     */
     weak var delegate: CalenderViewProtocol?
     
-    var singleTimeArray = [Dictionary<String,String>]()
-
-    
-    //Model for storing values
-    var mymodel = [Dictionary<String,String>]()
+    /**
+     Model for Storing Values
+     */
+    var calenderModel = [Dictionary<String,String>]()
     
     /**
      Is CalenderView Tapped
@@ -70,7 +68,32 @@ class CalenderView: UIView{
     var isClicked: Bool = false
     
     /**
+     Color of Event View
+     */
+    var eventColor: UIColor = UIColor(red: 58/255, green: 181/255, blue: 244/255, alpha: 1)
+
+    /**
+     Color of Event Text Label
+     */
+    var eventTextColor: UIColor = UIColor.white
+
+    fileprivate var startTimes = [Int]()
+    
+    fileprivate var endTimes = [Int]()
+
+    fileprivate var events = [String]()
+
+    
+    var EventViewdataModel = [PTEventViewModel]()
+    
+    /**
      Setup Calender View
+     - parameter frame:   The frame of Calender View.
+     - parameter startime:   The JSON serialization reading options. `.AllowFragments` by default.
+     - parameter opt:   The JSON serialization reading options. `.AllowFragments` by default.
+     - parameter opt:   The JSON serialization reading options. `.AllowFragments` by default.
+     - parameter opt:   The JSON serialization reading options. `.AllowFragments` by default.
+
      */
     func setup(frame: CGRect, startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]){
         
@@ -80,18 +103,11 @@ class CalenderView: UIView{
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true
         
-        for i in 0..<startTime.count {
-            var valuesDictionary = Dictionary<String,String>()
-            
-            valuesDictionary["startTime"] = startTime[i].description + " " + returnTimeZone(zone: startTimeZone[i])
-            valuesDictionary["EndTime"] = endTime[i].description + " " + returnTimeZone(zone: endTimeZone[i])
-            valuesDictionary["eventName"] = eventName[i]
-            
-            singleTimeArray.append(valuesDictionary)
-        }
+        setUpTableViewSize(isOpen: false)
         
+        setupData()
         
-        self.addEvent(startTime: startTime, startTimeZone: startTimeZone, eventName: eventName, endTime: endTime, endTimeZone: endTimeZone)
+        self.addEvent(startTimes: startTimes, endTimes: endTimes, eventNames: events)
         
         eventTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
         timeTableView.register(UINib(nibName: "CalenderViewCell", bundle: nil), forCellReuseIdentifier: "CalenderViewCell")
@@ -102,18 +118,52 @@ class CalenderView: UIView{
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapBlurButton(_:)))
         self.addGestureRecognizer(tapGesture)
     }
-
     
-    func returnTimeZone(zone:timeZone) -> String{
-    
-        if zone == timeZone.AM {
-            return "AM"
-        }
-        else {
-            return "PM"
+    func setupData() {
+        for event in EventViewdataModel {
+            if event.startTime!.localizedCaseInsensitiveContains("AM") || event.startTime!.localizedCaseInsensitiveContains("A.M.") || event.startTime!.localizedCaseInsensitiveContains("A M") {
+                if let number = Int(event.startTime!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+                    startTimes.append(number)
+                } else {
+                    print("Incorrect Format")
+                }
+            } else {
+                if let number = Int(event.startTime!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+                    startTimes.append(number+12)
+                } else {
+                    print("Incorrect Format")
+                }
+            }
+            
+            if event.endTime!.localizedCaseInsensitiveContains("AM") || event.endTime!.localizedCaseInsensitiveContains("A.M.") || event.endTime!.localizedCaseInsensitiveContains("A M") {
+                if let number = Int(event.endTime!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+                    endTimes.append(number)
+                } else {
+                    print("Incorrect Format")
+                }
+            } else {
+                if let number = Int(event.endTime!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+                    endTimes.append(number+12)
+                } else {
+                    print("Incorrect Format")
+                }
+            }
+            events.append(event.eventName!)
         }
     }
- 
+    
+    func setUpTableViewSize(isOpen: Bool) {
+        
+        if isOpen {
+            self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: self.eventTableView.contentSize)
+            self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: self.timeTableView.contentSize)
+            
+        } else {
+            self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: CGSize(width: self.timeTableView.frame.width, height: 132))
+            
+            self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.frame.width-63, height: 132))
+        }
+    }
 
     func tapBlurButton(_ sender: UITapGestureRecognizer) {
         
@@ -126,24 +176,21 @@ class CalenderView: UIView{
                 self.delegate?.willCloseCalenderView!(height: 132)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: 132))
-                self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: CGSize(width: self.eventTableView.frame.width, height: 132))
-                self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: CGSize(width: self.timeTableView.frame.width, height: 132))
                 
-                
+                self.setUpTableViewSize(isOpen: false)
                 self.isClicked = false
+                
             } else {
                 
                 self.delegate?.willOpenCalenderView!(height: self.timeTableView.contentSize.height)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: self.timeTableView.contentSize.height))
-                self.eventTableView.frame = CGRect(origin: self.eventTableView.frame.origin, size: self.eventTableView.contentSize)
-                self.timeTableView.frame = CGRect(origin: self.timeTableView.frame.origin, size: self.timeTableView.contentSize)
                 
-                
+                self.setUpTableViewSize(isOpen: true)
                 self.isClicked = true
             }
-            
             self.layoutIfNeeded()
+            
         }) { (true) in
             if !self.isClicked {
                 self.delegate?.didCloseCalenderView!(height: 132)
@@ -162,29 +209,26 @@ extension CalenderView :UITabBarDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(self.frame.size.width)
-        print(self.timeTableView.contentSize.width)
+
         if tableView == self.eventTableView{
-            return mymodel.count-1
+            return calenderModel.count-1
         } else {
-            return mymodel.count
+            return calenderModel.count
         }
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let returnCell = tableView.dequeueReusableCell(withIdentifier: "CalenderViewCell", for: indexPath) as! CalenderViewCell
         
-        var cellModel = mymodel[indexPath.row]
+        var cellModel = calenderModel[indexPath.row]
         
         if tableView == self.eventTableView {
             
             if cellModel["event"] != "" {
                 returnCell.cellLabel.text = cellModel["eventName"]
                 returnCell.contentView.backgroundColor = eventColor
-                returnCell.cellLabel.textColor = UIColor.white
+                returnCell.cellLabel.textColor = eventTextColor
             } else{
                 returnCell.cellLabel.text = ""
                 returnCell.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
@@ -202,19 +246,6 @@ extension CalenderView :UITabBarDelegate, UITableViewDataSource {
         return returnCell
     }
 }
-
-extension CalenderView{
-    class func RGBA(_ r : Int,g : Int,b : Int,a : CGFloat) -> UIColor{
-        
-        let red : CGFloat = CGFloat(r) / 255
-        let green : CGFloat = CGFloat(g) / 255
-        let blue : CGFloat = CGFloat(b) / 255
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: a)
-        
-    }
-}
-
 
 extension UIView{
     class func loadFromNibNamed(_ nibNamed: String, bundle : Bundle? = nil) -> UIView? {
@@ -242,26 +273,30 @@ extension UIFont{
 }
 
 extension CalenderView {
-    func addEvent(startTime:[Int] = [12],startTimeZone:[timeZone] = [timeZone.AM], eventName: [String] = [""], endTime:[Int] = [5], endTimeZone: [timeZone] = [timeZone.AM]) {
+    func addEvent(startTimes: [Int], endTimes: [Int], eventNames: [String]) {
         
         
-        for i in startTime.min()!-1..<endTime.max()!+2 {
+        for i in startTimes.min()!-1..<endTimes.max()!+2 {
             
             var valueDict = Dictionary<String,String>()
+           
+            if i==12 {
+                valueDict["time"] = "Noon"
+            } else {
+                valueDict["time"] = i<13 ? i.description + " AM" : (i-12).description + " PM"
+            }
             
-            valueDict["time"] = i<13 ? i.description + " AM" : (i-12).description + " PM"
-            
-            if startTime.contains(i){
-                let indexOfElement = startTime.index(of: i)
-                valueDict["eventName"] = eventName[indexOfElement!]
+            if startTimes.contains(i){
+                let indexOfElement = startTimes.index(of: i)
+                valueDict["eventName"] = eventNames[indexOfElement!]
             } else {
                 valueDict["eventName"] = ""
             }
             
-            if i>=startTime.first! && i<endTime.last!{
-                for index in 0..<startTime.count{
+            if i>=startTimes.first! && i<endTimes.last!{
+                for index in 0..<startTimes.count{
                     
-                    if i>=startTime[index] && i<endTime[index]{
+                    if i>=startTimes[index] && i<endTimes[index]{
                         valueDict["event"] = " "
                         break
                     } else {
@@ -271,7 +306,7 @@ extension CalenderView {
             } else {
                 valueDict["event"] = ""
             }
-            mymodel.append(valueDict)
+            calenderModel.append(valueDict)
         }
     }
 }
