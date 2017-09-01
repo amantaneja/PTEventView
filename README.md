@@ -9,6 +9,15 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 
 <img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventView.gif" >
 
+```swift
+// In loadView or viewDidLoad
+let ptEventView = Bundle.main.loadNibNamed("PTEventView", owner: nil, options: nil)![0] as? PTEventView
+ptEventView?.delegate = self
+ptEventView?.setup(frame: myCalenderView.frame)
+self.view.addSubview(ptEventView!)
+```
+
+
 # StoryBoard
 Supports IBDesignable to alter Border Width, Corner Radius and Border Color
 <img src="https://github.com/amantaneja/PTEventView/blob/master/IBDesignable.png" height="220" width="370">
