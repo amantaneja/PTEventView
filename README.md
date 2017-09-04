@@ -57,7 +57,7 @@ Supports IBDesignable to alter Border Width, Corner Radius and Border Color
 
 # ToDo[s]
 - [x] Add support for PM and AM via 24 hour format
-- [ ] Orientation Support. Currently supports UI for Portrait. (Now supports both Orientations)
+- [ ] Orientation Support. Currently supports UI for Portrait.
 - [x] Add delegation for callbacks
 - [ ] Implement AutoLayout for CalenderView
 - [ ] Support Events on the same day
