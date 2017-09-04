@@ -13,6 +13,12 @@
 		61FBE02F1F5D8A6E00502FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61FBE02E1F5D8A6E00502FC0 /* Assets.xcassets */; };
 		61FBE0321F5D8A6E00502FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61FBE0301F5D8A6E00502FC0 /* LaunchScreen.storyboard */; };
 		61FBE03D1F5D8A6E00502FC0 /* PTEventViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBE03C1F5D8A6E00502FC0 /* PTEventViewDemoTests.swift */; };
+		61FBE09B1F5D9DEB00502FC0 /* PTEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBE0951F5D9DEB00502FC0 /* PTEventView.swift */; };
+		61FBE09C1F5D9DEB00502FC0 /* PTEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FBE0961F5D9DEB00502FC0 /* PTEventView.xib */; };
+		61FBE09D1F5D9DEB00502FC0 /* PTEventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBE0971F5D9DEB00502FC0 /* PTEventViewCell.swift */; };
+		61FBE09E1F5D9DEB00502FC0 /* PTEventViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FBE0981F5D9DEB00502FC0 /* PTEventViewCell.xib */; };
+		61FBE09F1F5D9DEB00502FC0 /* PTEventViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBE0991F5D9DEB00502FC0 /* PTEventViewDelegate.swift */; };
+		61FBE0A01F5D9DEB00502FC0 /* PTEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBE09A1F5D9DEB00502FC0 /* PTEventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		61FBE0381F5D8A6E00502FC0 /* PTEventViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PTEventViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61FBE03C1F5D8A6E00502FC0 /* PTEventViewDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTEventViewDemoTests.swift; sourceTree = "<group>"; };
 		61FBE03E1F5D8A6E00502FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61FBE0951F5D9DEB00502FC0 /* PTEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PTEventView.swift; path = PTEventView/PTEventView.swift; sourceTree = "<group>"; };
+		61FBE0961F5D9DEB00502FC0 /* PTEventView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTEventView.xib; path = PTEventView/PTEventView.xib; sourceTree = "<group>"; };
+		61FBE0971F5D9DEB00502FC0 /* PTEventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PTEventViewCell.swift; path = PTEventView/PTEventViewCell.swift; sourceTree = "<group>"; };
+		61FBE0981F5D9DEB00502FC0 /* PTEventViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTEventViewCell.xib; path = PTEventView/PTEventViewCell.xib; sourceTree = "<group>"; };
+		61FBE0991F5D9DEB00502FC0 /* PTEventViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PTEventViewDelegate.swift; path = PTEventView/PTEventViewDelegate.swift; sourceTree = "<group>"; };
+		61FBE09A1F5D9DEB00502FC0 /* PTEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PTEventViewModel.swift; path = PTEventView/PTEventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,7 @@
 		61FBE0261F5D8A6E00502FC0 /* PTEventViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				61FBE0941F5D9DE100502FC0 /* PTEventView */,
 				61FBE0271F5D8A6E00502FC0 /* AppDelegate.swift */,
 				61FBE0291F5D8A6E00502FC0 /* ViewController.swift */,
 				61FBE02B1F5D8A6E00502FC0 /* Main.storyboard */,
@@ -94,6 +107,19 @@
 				61FBE03E1F5D8A6E00502FC0 /* Info.plist */,
 			);
 			path = PTEventViewDemoTests;
+			sourceTree = "<group>";
+		};
+		61FBE0941F5D9DE100502FC0 /* PTEventView */ = {
+			isa = PBXGroup;
+			children = (
+				61FBE0951F5D9DEB00502FC0 /* PTEventView.swift */,
+				61FBE0961F5D9DEB00502FC0 /* PTEventView.xib */,
+				61FBE0971F5D9DEB00502FC0 /* PTEventViewCell.swift */,
+				61FBE0981F5D9DEB00502FC0 /* PTEventViewCell.xib */,
+				61FBE0991F5D9DEB00502FC0 /* PTEventViewDelegate.swift */,
+				61FBE09A1F5D9DEB00502FC0 /* PTEventViewModel.swift */,
+			);
+			name = PTEventView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +206,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				61FBE0321F5D8A6E00502FC0 /* LaunchScreen.storyboard in Resources */,
+				61FBE09C1F5D9DEB00502FC0 /* PTEventView.xib in Resources */,
 				61FBE02F1F5D8A6E00502FC0 /* Assets.xcassets in Resources */,
 				61FBE02D1F5D8A6E00502FC0 /* Main.storyboard in Resources */,
+				61FBE09E1F5D9DEB00502FC0 /* PTEventViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61FBE09B1F5D9DEB00502FC0 /* PTEventView.swift in Sources */,
+				61FBE0A01F5D9DEB00502FC0 /* PTEventViewModel.swift in Sources */,
+				61FBE09D1F5D9DEB00502FC0 /* PTEventViewCell.swift in Sources */,
 				61FBE02A1F5D8A6E00502FC0 /* ViewController.swift in Sources */,
 				61FBE0281F5D8A6E00502FC0 /* AppDelegate.swift in Sources */,
+				61FBE09F1F5D9DEB00502FC0 /* PTEventViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +436,7 @@
 				61FBE0431F5D8A6E00502FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61FBE0441F5D8A6E00502FC0 /* Build configuration list for PBXNativeTarget "PTEventViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +445,7 @@
 				61FBE0461F5D8A6E00502FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
