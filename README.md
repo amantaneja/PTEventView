@@ -9,12 +9,31 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 
 <img src="https://github.com/amantaneja/PTEventView/blob/master/PTEventView.gif" >
 
+# Setup
+### Adding PTEventView
+
+```swift
+fileprivate weak var myCalenderView: PTEventView!
+```
 ```swift
 // In loadView or viewDidLoad
 let ptEventView = Bundle.main.loadNibNamed("PTEventView", owner: nil, options: nil)![0] as? PTEventView
 ptEventView?.delegate = self
 ptEventView?.setup(frame: myCalenderView.frame)
 self.view.addSubview(ptEventView!)
+```
+
+### Data Model
+PTEventView supports both 12 hour and 24 hour format as data model. The input can be received from the API or Database(Core Data, Realm, SQLite) in the form of Array of Event Object.<br>
+The Event Object should have:
+- Start Time (12 hour or 24 hour)
+- End Time (12 hour or 24 hour)
+- Name of the Event <br>
+**Note**: Incase of 12 hour, suffix time with AM or PM.<br>
+
+**Example** 
+```swift
+let dataModel = [["10AM","11AM","Swift Meetup '17"],["12AM","3PM","WWDC KickOff"]]
 ```
 
 
