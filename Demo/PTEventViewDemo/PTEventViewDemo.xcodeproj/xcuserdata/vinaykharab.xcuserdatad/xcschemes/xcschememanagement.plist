@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CalenderView.xcscheme</key>
+		<key>PTEventViewDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6193BA061F47189B0024802B</key>
+		<key>61FBE0231F5D8A6E00502FC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61FBE0371F5D8A6E00502FC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

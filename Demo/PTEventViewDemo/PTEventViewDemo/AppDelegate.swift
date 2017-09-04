@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  CalenderView
+//  PTEventViewDemo
 //
-//  Created by Vinay Kharb on 8/18/17.
+//  Created by Vinay Kharb on 9/4/17.
 //  Copyright © 2017 Aman Taneja. All rights reserved.
 //
 

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6193BA061F47189B0024802B"
-               BuildableName = "CalenderView.app"
-               BlueprintName = "CalenderView"
-               ReferencedContainer = "container:CalenderView.xcodeproj">
+               BlueprintIdentifier = "61FBE0231F5D8A6E00502FC0"
+               BuildableName = "PTEventViewDemo.app"
+               BlueprintName = "PTEventViewDemo"
+               ReferencedContainer = "container:PTEventViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +28,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "61FBE0371F5D8A6E00502FC0"
+               BuildableName = "PTEventViewDemoTests.xctest"
+               BlueprintName = "PTEventViewDemoTests"
+               ReferencedContainer = "container:PTEventViewDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6193BA061F47189B0024802B"
-            BuildableName = "CalenderView.app"
-            BlueprintName = "CalenderView"
-            ReferencedContainer = "container:CalenderView.xcodeproj">
+            BlueprintIdentifier = "61FBE0231F5D8A6E00502FC0"
+            BuildableName = "PTEventViewDemo.app"
+            BlueprintName = "PTEventViewDemo"
+            ReferencedContainer = "container:PTEventViewDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6193BA061F47189B0024802B"
-            BuildableName = "CalenderView.app"
-            BlueprintName = "CalenderView"
-            ReferencedContainer = "container:CalenderView.xcodeproj">
+            BlueprintIdentifier = "61FBE0231F5D8A6E00502FC0"
+            BuildableName = "PTEventViewDemo.app"
+            BlueprintName = "PTEventViewDemo"
+            ReferencedContainer = "container:PTEventViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6193BA061F47189B0024802B"
-            BuildableName = "CalenderView.app"
-            BlueprintName = "CalenderView"
-            ReferencedContainer = "container:CalenderView.xcodeproj">
+            BlueprintIdentifier = "61FBE0231F5D8A6E00502FC0"
+            BuildableName = "PTEventViewDemo.app"
+            BlueprintName = "PTEventViewDemo"
+            ReferencedContainer = "container:PTEventViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
