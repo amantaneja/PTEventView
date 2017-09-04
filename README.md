@@ -1,5 +1,5 @@
 
-<center><img src="https://github.com/amantaneja/PTEventView/blob/master/Images/PTEventView.png"></center><br>
+<center><img src="https://github.com/amantaneja/PTEventView/blob/master/Images/PTEventViewTitle.png"></center><br>
 An Event View based on Apple's Event Detail View. Written in Swift 3. Supports ARC, Autolayout and editing via StoryBoard.
 
 ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
@@ -7,7 +7,7 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 ![Swift 3.x](https://img.shields.io/badge/Swift-3.x-blue.svg)
 ![MadeWithLove](https://img.shields.io/badge/Made%20with%20%E2%9D%A4-India-green.svg)
 
-<img src="https://github.com/amantaneja/PTEventView/blob/master/Images/PTEventView.gif" >
+<img src="https://github.com/amantaneja/PTEventView/blob/master/Images/PTEventViewDemo.gif" >
 
 # Setup
 ### Adding PTEventView
