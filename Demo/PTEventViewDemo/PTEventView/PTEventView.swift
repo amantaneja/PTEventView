@@ -55,6 +55,8 @@ class PTEventView: UIView {
      */
     var calenderModel = [Dictionary<String,String>]()
     
+    var is24HourFormat: Bool = false
+    
     /**
      Is CalenderView Tapped
      */
@@ -89,7 +91,11 @@ class PTEventView: UIView {
         
         setUpTableViewSize(isOpen: false)
         
-        setupData()
+        if !is24HourFormat{
+            setupData()
+        } else{
+            setup24HourData()
+        }
         
         self.addEvent(startTimes: startTimes, endTimes: endTimes, eventNames: events)
         
@@ -136,6 +142,23 @@ class PTEventView: UIView {
         }
     }
 
+    func setup24HourData() {
+        for event in EventViewdataModel{
+            if let number = Int(event.startTime!){
+                startTimes.append(number)
+            } else {
+                print("Incorrect Format")
+            }
+            
+            if let number = Int(event.endTime!){
+                endTimes.append(number)
+            } else {
+                print("Incorrect Format")
+            }
+            events.append(event.eventName!)
+        }
+    }
+    
     func setUpTableViewSize(isOpen: Bool) {
         
         if isOpen {
@@ -157,7 +180,7 @@ class PTEventView: UIView {
             
             if self.isClicked {
                 
-                self.delegate?.willClosePTEventView!(height: 132)
+                self.delegate?.willClosePTEventView?(height: 132)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: 132))
                 
@@ -168,7 +191,7 @@ class PTEventView: UIView {
                 if self.timeTableView.contentSize.height == 0 {
                     return
                 }
-                self.delegate?.willOpenPTEventView!(height: self.timeTableView.contentSize.height)
+                self.delegate?.willOpenPTEventView?(height: self.timeTableView.contentSize.height)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: self.timeTableView.contentSize.height))
                 
@@ -179,12 +202,12 @@ class PTEventView: UIView {
             
         }) { (true) in
             if !self.isClicked {
-                self.delegate?.didClosePTEventView!(height: 132)
+                self.delegate?.didClosePTEventView?(height: 132)
             } else {
                 if self.timeTableView.contentSize.height == 0 {
                     return
                 } else {
-                self.delegate?.didOpenPTEventView!(height: self.timeTableView.contentSize.height)
+                self.delegate?.didOpenPTEventView?(height: self.timeTableView.contentSize.height)
                 }
             }
         }

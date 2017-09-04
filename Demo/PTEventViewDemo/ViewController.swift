@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var PTEventView: PTEventView!
-    let events = [["5AM","9AM","WWDC KickOff"],["12AM","3PM","Swift Meetup '17"]]
+    let events = [["5","9","WWDC KickOff"],["12","15","Swift Meetup '17"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,7 @@ class ViewController: UIViewController {
             ptEventView?.EventViewdataModel.append(eventModel)
         }
         
+        ptEventView?.is24HourFormat = true
         ptEventView?.setup(frame: PTEventView.frame)
         self.view.addSubview(ptEventView!)
         
