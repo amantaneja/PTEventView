@@ -33,7 +33,9 @@ The Event Object should have:
 
 **Example** 
 ```swift
-let dataModel = [["10AM","11AM","Swift Meetup '17"],["12AM","3PM","WWDC KickOff"]]
+let dataModel12hour = [["10AM","11AM","Swift Meetup '17"],["12AM","3PM","WWDC KickOff"]]
+let dataModel24hour = [["10","11","Swift Meetup '17"],["12","15","WWDC KickOff"]]
+
 ```
 
 
