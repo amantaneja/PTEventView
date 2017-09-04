@@ -13,7 +13,7 @@ import UIKit
  taps on a Calender View
  */
 
-@objc public protocol PTEventViewProtocol {
+@objc protocol PTEventViewProtocol {
     
     @objc optional func willOpenPTEventView(height:CGFloat)
     
@@ -22,4 +22,6 @@ import UIKit
     @objc optional func willClosePTEventView(height:CGFloat)
     
     @objc optional func didClosePTEventView(height:CGFloat)
+    
+    @objc optional func didReceiveErrorWhilePlottingEventView()
 }

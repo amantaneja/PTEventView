@@ -48,7 +48,7 @@ class PTEventView: UIView {
     /**
      CalenderView Protocol
      */
-    weak var delegate: PTEventViewProtocol?
+    @IBOutlet open weak var delegate: PTEventViewProtocol?
     
     /**
      Model for Storing Values
@@ -165,7 +165,9 @@ class PTEventView: UIView {
                 self.isClicked = false
                 
             } else {
-                
+                if self.timeTableView.contentSize.height == 0 {
+                    return
+                }
                 self.delegate?.willOpenPTEventView!(height: self.timeTableView.contentSize.height)
                 
                 self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: self.timeTableView.contentSize.height))
@@ -179,7 +181,11 @@ class PTEventView: UIView {
             if !self.isClicked {
                 self.delegate?.didClosePTEventView!(height: 132)
             } else {
+                if self.timeTableView.contentSize.height == 0 {
+                    return
+                } else {
                 self.delegate?.didOpenPTEventView!(height: self.timeTableView.contentSize.height)
+                }
             }
         }
     }
@@ -234,7 +240,10 @@ extension PTEventView : UITabBarDelegate, UITableViewDataSource {
 extension PTEventView {
     func addEvent(startTimes: [Int], endTimes: [Int], eventNames: [String]) {
         
-        
+        if startTimes.count==0 || endTimes.count==0 {
+            delegate?.didReceiveErrorWhilePlottingEventView?()
+            return
+        }
         for i in startTimes.min()!-1..<endTimes.max()!+2 {
             
             var valueDict = Dictionary<String,String>()
