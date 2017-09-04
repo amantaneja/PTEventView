@@ -35,7 +35,18 @@ The Event Object should have:
 ```swift
 let dataModel12hour = [["10AM","11AM","Swift Meetup '17"],["12AM","3PM","WWDC KickOff"]]
 let dataModel24hour = [["10","11","Swift Meetup '17"],["12","15","WWDC KickOff"]]
-
+```
+```swift
+for event in dataModel12hour{
+            
+    let eventModel = PTEventViewModel()
+    
+    eventModel.startTime = event[0]
+    eventModel.endTime = event[1]
+    eventModel.eventName = event[2]
+    
+    ptEventView?.EventViewdataModel.append(eventModel)
+}
 ```
 
 
