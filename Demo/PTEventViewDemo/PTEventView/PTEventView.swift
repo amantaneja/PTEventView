@@ -81,6 +81,10 @@ class PTEventView: UIView {
     
     var EventViewdataModel = [PTEventViewModel]()
 
+    /**
+     Sets up the PTEventView. Manages data, views and registers Tableviews.
+     - Parameter frame: frame of PTEventView
+     */
     func setup(frame: CGRect){
         
         self.frame = frame
@@ -109,6 +113,9 @@ class PTEventView: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
+    /**
+     Convert EventModel to array of startTimes and endTimes.
+     */
     func setupData() {
         for event in EventViewdataModel {
             if event.startTime!.localizedCaseInsensitiveContains("AM") || event.startTime!.localizedCaseInsensitiveContains("A.M.") || event.startTime!.localizedCaseInsensitiveContains("A M") {
@@ -142,6 +149,9 @@ class PTEventView: UIView {
         }
     }
 
+    /**
+     Sets up the 24 hour model
+     */
     func setup24HourData() {
         for event in EventViewdataModel{
             if let number = Int(event.startTime!){
@@ -159,6 +169,10 @@ class PTEventView: UIView {
         }
     }
     
+    /**
+     Sets up the PTEventView tableview frame and view frame.
+     - Parameter isOpen: Deceides if the PTEventView should open or close
+     */
     func setUpTableViewSize(isOpen: Bool) {
         
         if isOpen {
@@ -172,6 +186,10 @@ class PTEventView: UIView {
         }
     }
 
+    /**
+     Receiver for Tap Click on PTEventView
+     - Parameter sender: TapGestureRecognizer
+     */
     func tapBlurButton(_ sender: UITapGestureRecognizer) {
         
         self.layoutIfNeeded()
