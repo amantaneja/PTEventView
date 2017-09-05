@@ -9,6 +9,18 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 
 <img src="https://github.com/amantaneja/PTEventView/blob/master/Images/PTEventViewDemo.gif" >
 
+# Installation
+### CocoaPods
+The project is uploaded on CocoaPods and will available for downloading soon. <br>
+http://cocoadocs.org/docsets/PTEventView/0.2.0/
+
+
+### Carthrage
+The project will be available on Carthrage too. [As soon as I learn how to do it. ;) ]<br>
+
+### Manual
+You can drag and drop the Files from [here](https://github.com/amantaneja/PTEventView/tree/master/Demo/PTEventViewDemo/PTEventView) into your projects directly. 
+
 # Setup
 ### Adding PTEventView
 
