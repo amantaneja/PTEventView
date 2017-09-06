@@ -36,7 +36,7 @@ self.view.addSubview(ptEventView!)
 ```
 
 ### Data Model
-PTEventView supports both 12 hour and 24 hour format as data model. The input can be received from the API or Database(Core Data, Realm, SQLite) in the form of Array of Event Object.<br>
+PTEventView supports both 12 hour and 24 hour format as data model. The input can be received from the API or Database(Core Data, Realm, SQLite) in the form of Array of `Event Object`.<br>
 The Event Object should have:
 - Start Time (12 hour or 24 hour)
 - End Time (12 hour or 24 hour)
@@ -67,9 +67,21 @@ for event in dataModel12hour{
 
 
 # StoryBoard
-Supports IBDesignable to alter Border Width, Corner Radius and Border Color
+Supports IBDesignable to alter `Border Width`, `Corner Radius` and `Border Color`
 <img src="https://github.com/amantaneja/PTEventView/blob/master/Images/IBDesignable.png" height="220" width="370">
 
+### Customization
+You can customize the view parameters for designing your own view:
+
+`borderColor` **- Border Color** *Default is Black*
+
+`borderWidth` **- Border Width** *Default is 1.0*
+
+`cornerRadius` **- Corner Radius** *Default is 6.0*
+
+`eventColor` **- Event Color** *Default is as given in Demo Gif*
+
+`eventTextColor` **- Event Text Color** *Default is white. Try to make it contrasting with eventColor*
 
 # ToDo[s]
 - [x] Add support for PM and AM via 24 hour format
