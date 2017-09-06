@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "addEvent(startTimes:endTimes:eventNames:)"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
             endingLineNumber = "177"
-            landmarkName = "tapBlurButton(_:)"
+            landmarkName = "setUpTableViewSize(isOpen:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
