@@ -12,7 +12,7 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 # Installation
 ### CocoaPods
 **PTEventView** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
-```ruby
+```swift
 use_frameworks!
 pod 'PTEventView'
 ```
