@@ -3,4 +3,4 @@ language: swift
 
 script: 
 - "xcodebuild -sdk iphonesimulator clean"
-- "xcodebuild -scheme SwiftCop -project PTEventView.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build-for-testing"
+- "xcodebuild -scheme PTEventViewDemo -project PTEventViewDemo.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build-for-testing"
