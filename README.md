@@ -11,9 +11,11 @@ An Event View based on Apple's Event Detail View. Written in Swift 3. Supports A
 
 # Installation
 ### CocoaPods
-The project is uploaded on CocoaPods and will available for downloading soon. <br>
-http://cocoadocs.org/docsets/PTEventView/0.2.0/
-
+**PTEventView** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+```swift
+use_frameworks!
+pod 'PTEventView'
+```
 
 ### Carthrage
 The project will be available on Carthrage too. [As soon as I learn how to do it. ;) ]<br>
@@ -91,7 +93,15 @@ You can customize the view parameters for designing your own view:
 - [ ] Support Events on the same day
 - [ ] Add IBInspectable for Row Color of Event
 
+## Requirement
+- iOS 8.0+ (CocoaPods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
+- Xcode 8.0+, Swift 3.0+
 
 ## License
 
 PTEventView is released under the MIT license. See [LICENSE](https://github.com/amantaneja/PTEventView/blob/master/LICENSE) for details.
+
+
+[**★Star**](#) this repo. 
+
+http://culturestreet.com/depot/620--auto--uploads-2013-12-Daily-quotes-5-December.jpg
