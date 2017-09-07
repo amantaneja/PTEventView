@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCy-bG-0Y2" customClass="PTEventView" customModule="PTEventViewDemo" customModuleProvider="target">
-                                <rect key="frame" x="39" y="44" width="300" height="128"/>
+                                <rect key="frame" x="26" y="44" width="320" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="2tI-cQ-hnH"/>
+                                    <constraint firstAttribute="width" constant="320" id="2tI-cQ-hnH"/>
                                     <constraint firstAttribute="height" constant="128" id="KYE-oh-J95"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -48,7 +48,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Dmg-yC-kFp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="FGF-UX-g7x"/>
-                            <constraint firstItem="uCy-bG-0Y2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="HjX-zt-RzV"/>
+                            <constraint firstItem="uCy-bG-0Y2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="HjX-zt-RzV"/>
                             <constraint firstAttribute="trailing" secondItem="Dmg-yC-kFp" secondAttribute="trailing" constant="8" id="TGb-R0-LcR"/>
                             <constraint firstItem="uCy-bG-0Y2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="gfY-uf-bIE"/>
                             <constraint firstItem="Dmg-yC-kFp" firstAttribute="top" secondItem="uCy-bG-0Y2" secondAttribute="bottom" constant="11" id="zFD-lU-7z7"/>

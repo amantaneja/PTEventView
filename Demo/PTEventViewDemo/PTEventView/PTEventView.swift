@@ -194,7 +194,7 @@ class PTEventView: UIView {
         
         self.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             if self.isClicked {
                 
